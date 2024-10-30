@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raciocínio Lógico Algorítmico</title>
+</head>
+<body>
+    <h1>Raciocínio Lógico Algorítmico</h1>
+    <p>Lista de integrantes do grupo</p>
+    <ul>
+        <li>Emanuela Brandão Pinto - 2425206</li>
+        <li>Luiz Felipe Sousa Paiva - 2425122</li>
+        <li>Lorena Kailany Fernandes Nunes - 2425133</li>
+        <li>Liedson Kauam Oliveira Almeida - 2425131</li>
+        <li>Glória Maria de Souza Evangelista - 2424102</li>
+        <li>Guilherme Menezes Vieira - 2425132</li>
+    </ul>
+    <hr>
+    <script>
+        // a) Ler um vetor com as notas da avaliação 1 e outro com as notas da avaliação 2. Informar as maiores e menores notas de AV1 e AV2. [0,5 pontos]
+
+        let avaliacao1 = [5, 3, 8, 2, 10];
+        let avaliacao2 = [6, 1, 4, 4, 8];
+
+        let maiorNotaAval1 = Math.max.apply(null, avaliacao1);
+        let maiorNotaAval2 = Math.max.apply(null, avaliacao2);
+
+        let menorNotaAval1 = Math.min.apply(null, avaliacao1);
+        let menorNotaAval2 = Math.min.apply(null, avaliacao2);
+
+        document.write(`<h2>As maiores notas das avaliações!</h2>`);
+        document.write(`<p>Avaliação 1: ${maiorNotaAval1}</p>`);
+        document.write(`<p>Avaliação 2: ${maiorNotaAval2}</p>`);
+
+        document.write(`<h2>As menores notas das avaliações!</h2>`);
+        document.write(`<p>Avaliação 1: ${menorNotaAval1}</p>`);
+        document.write(`<p>Avaliação 2: ${menorNotaAval2}</p>`);
+
+        document.write("<hr>")
+
+        // b) Calcular a média de notas da turma. A média da turma deverá ser apresentada da menor para a maior (ou seja, em ordem crescente). [1,0 pontos]
+
+        let mediaAval1 = avaliacao1.reduce((total, numero) => total + numero, 0) / avaliacao1.length;
+        let mediaAval2 = avaliacao2.reduce((total, numero) => total + numero, 0) / avaliacao2.length;
+
+        let mediaTurma = (mediaAval1 + mediaAval2) / 2;
+        
+        document.write(`<h2>A media geral da turma foi ${mediaTurma}.</h2>`);
+        document.write(`<p>A media da avaliação 1 foi ${mediaAval1}</p>`);
+        document.write(`<p>A media da avaliação 2 foi ${mediaAval2}</p>`);
+
+        let alunos = [];
+        for (let i = 0; i < avaliacao1.length; i++) {
+        alunos.push({
+            nota1: avaliacao1[i],
+            nota2: avaliacao2[i],
+            media: (avaliacao1[i] + avaliacao2[i]) / 2
+        });
+        }
+        
+        alunos.sort((a, b) => a.media - b.media);
+
+        document.write("<h2>Médias dos alunos (em ordem crescente):</h2>");
+        alunos.forEach(aluno => {document.write(`<p>${aluno.media}</p>`);});
+
+        document.write("<hr>")
+
+        // c) Informar a maior média e a menor média da turma. [1,0 pontos]
+
+        const alunoComMaiorMedia = alunos.reduce((maior, atual) => (atual.media > maior.media ? atual : maior));
+        const alunoComMenorMedia = alunos.reduce((menor, atual) => (atual.media < menor.media ? atual : menor));
+
+        document.write(`<p>Maior média: ${alunoComMaiorMedia.media}</p>`);
+        document.write(`<p>Menor média: ${alunoComMenorMedia.media}</p>`);
+
+        document.write("<hr>")
+        
+        // d) Informar quantos alunos foram aprovados e quantos estão em recuperação (considerando o critério de aprovação uma média igual ou superior a 5,0 pontos), apresentar um novo vetor com médias inferior a 5,0 dos alunos em recuperação. [1,5 ponto]
+
+        let mediaAprovacao = 5.0;
+        let aprovados = 0;
+        let reprovados = 0;
+        let mediasRecuperacao = [];
+
+        alunos.forEach(aluno => {
+            if (aluno.media >= mediaAprovacao) {
+                aprovados++;
+            } else {
+                reprovados++;
+                mediasRecuperacao.push(aluno.media)
+            }
+        })
+
+        document.write(`<p>Número de alunos aprovados: ${aprovados}</p>`);
+        document.write(`<p>Número de alunos em recuperação: ${reprovados}</p>`);
+        document.write(`<p>Médias dos alunos em recuperação: ${mediasRecuperacao}</p>`);
+
+    </script>
+</body>
+</html>
