@@ -4,72 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raciocínio Lógico Algorítmico</title>
+</head>
 
-    <style>
-        * {
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
     margin: 0;
     padding: 0;
+    list-style: none;
+    text-decoration: none;
     box-sizing: border-box;
-    }
+    font-family: "Poppins", Arial, sans-serif;
+}
 
-    body {
-        background-color: salmon;
-    }
+body {
+    background-image: linear-gradient(90deg, #ffffff, #208eff);
+}
 
-    #pai {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
+#base {
+    gap: 20px;
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+    flex-direction: column;
+}
 
-    .card {
-        border: 1px solid white;
-        border-radius: 10px;
-        padding: 5px;
-        line-height: 25px;
-        width: 500px;
-        height: auto;
-        background-color: rgb(230,199,183);
-    }
+.card {
+    width: 100%;
+    padding: 20px;
+    max-width: 600px;
+    line-height: 25px;
+    border-radius: 10px;
+    border: 1px solid white;
+    background-color: #e5ebff;
+}
 
-    .card:hover{
-        box-shadow: 8px 8px 10px rgba(54, 50, 50, 0.801);
-    }
+.card:hover{
+    box-shadow: 5px 5px 5px black;
+}
 
-    .card h1, h2 {
-        text-align: center;
-    }
+.card h1, h2 {
+    padding: 2px;
+    line-height: 2em;
+    text-align: center;
+}
 
-    .card li {
-        padding-left: 20px;
-        list-style: none;
-    }
+.card h3 {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    line-height: 1.5em;
+}
 
-    .card p {
-        padding-left: 10px;
-    }
+.card li {
+    padding-left: 20px;
+    list-style: none;
+}
 
-    .tituloItens {
-        color: rgb(0, 0, 0);
-    }
-    </style>
-</head>
+.card p {
+    line-height: 2em;
+    padding-left: 10px;
+}
+
+.tituloItens {
+    color: rgb(0, 0, 0);
+}
+</style>
+
 <body>
-    <div id="pai">
+
+    <div id="base">
         <div class="card">
             <h1 class='tituloItens'>Raciocínio Lógico Algorítmico</h1>
             <hr>
-            <p>Lista de integrantes do grupo</p>
+            <p>Grupo 18:</p>
             <ul>
                 <li>Emanuela Brandão Pinto - 2425206</li>
-                <li>Luiz Felipe Sousa Paiva - 2425122</li>
-                <li>Lorena Kailany Fernandes Nunes - 2425133</li>
-                <li>Liedson Kauam Oliveira Almeida - 2425131</li>
                 <li>Glória Maria de Souza Evangelista - 2424102</li>
                 <li>Guilherme Menezes Vieira - 2425132</li>
+                <li>Liedson Kauam Oliveira Almeida - 2425131</li>
+                <li>Lorena Kailany Fernandes Nunes - 2425133</li>
+                <li>Luiz Felipe Sousa Paiva - 2425122</li>
             </ul>
         </div>
         <script>
@@ -86,13 +102,16 @@
             let menorNotaAval2 = Math.min.apply(null, avaliacao2);
 
             document.write('<div class="card">') // Open Container
-            document.write(`<h2 class="tituloItens">As maiores notas das avaliações!</h2>`);
+            document.write(`<h2 class="tituloItens">As maiores notas das avaliações</h2>`);
             document.write("<hr>");
 
             document.write(`<p>Avaliação 1: ${maiorNotaAval1}</p>`);
             document.write(`<p>Avaliação 2: ${maiorNotaAval2}</p>`);
 
-            document.write(`<h3>As menores notas das avaliações!</h3>`);
+
+            document.write(`<h2>As menores notas das avaliações</h2>`);
+            document.write("<hr>")
+
             document.write(`<p>Avaliação 1: ${menorNotaAval1}</p>`);
             document.write(`<p>Avaliação 2: ${menorNotaAval2}</p>`);
 
@@ -106,12 +125,12 @@
             let mediaTurma = (mediaAval1 + mediaAval2) / 2;
             
             document.write('<div class="card">') // Open Container
-            document.write("<h2 class='tituloItens'>Media</h2>")
+            document.write("<h2 class='tituloItens'>Média</h2>")
             document.write("<hr>");
             
-            document.write(`<h3>A media geral da turma foi ${mediaTurma}.</h3>`);
-            document.write(`<p>A media da avaliação 1 foi ${mediaAval1}</p>`);
-            document.write(`<p>A media da avaliação 2 foi ${mediaAval2}</p>`);
+            document.write(`<h3>A média geral da turma foi ${mediaTurma}.</h3>`);
+            document.write(`<p>A média da avaliação 1 foi ${mediaAval1}</p>`);
+            document.write(`<p>A média da avaliação 2 foi ${mediaAval2}</p>`);
 
             let alunos = [];
             for (let i = 0; i < avaliacao1.length; i++) {
